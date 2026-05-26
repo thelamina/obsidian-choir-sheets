@@ -56,7 +56,7 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 		wrapper.style.setProperty('--choir-tab-active-bg', this.settings.tabActiveBgColor);
 	}
 
-	private renderAllMode(blocks: BlockData[]): void {
+	private renderAllMode(blocks: BlockData[], activeParts?: Set<string>): void {
 		this.allContents.empty();
 
 		type PartSec = { part: string; color: string; sections: ReturnType<typeof groupIntoSections> };
@@ -127,6 +127,7 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 				}
 
 				for (const ps of partSections) {
+					if (activeParts && !activeParts.has(ps.part)) continue;
 					const solfaText = ps.sections[si]?.solfatextLines[li] || '';
 					if (solfaText) {
 						const solfaRow = document.createElement('div');
@@ -166,11 +167,10 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 				const activeTabs = this.tabBar.querySelectorAll('.choir-tab.active');
 
 				if (activeTabs.length === 0) {
-					tabBtn.classList.add('active');
-					return;
-				}
-
-				if (activeTabs.length === 1) {
+					this.tabContents.style.display = 'none';
+					this.allContents.style.display = '';
+					this.renderAllMode(this.blocks, new Set());
+				} else if (activeTabs.length === 1) {
 					this.tabContents.style.display = '';
 					this.allContents.style.display = 'none';
 					const activeTab = activeTabs[0] as HTMLElement;
@@ -181,13 +181,9 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 					this.tabContents.style.display = 'none';
 					this.allContents.style.display = '';
 
-					const activeBlocks: BlockData[] = [];
-					activeTabs.forEach(t => {
-						const p = (t as HTMLElement).dataset.part!;
-						const block = this.blocks.find(b => b.part === p);
-						if (block) activeBlocks.push(block);
-					});
-					this.renderAllMode(activeBlocks);
+					const activeParts = new Set<string>();
+					activeTabs.forEach(t => activeParts.add((t as HTMLElement).dataset.part!));
+					this.renderAllMode(this.blocks, activeParts);
 				}
 			});
 		});

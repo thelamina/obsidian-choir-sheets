@@ -58,7 +58,7 @@ export class ChoirBlockGroupWidget extends WidgetType {
 		wrapper.style.setProperty('--choir-tab-active-bg', this.settings.tabActiveBgColor);
 	}
 
-	private renderAllMode(container: HTMLElement, blocks: BlockData[]): void {
+	private renderAllMode(container: HTMLElement, blocks: BlockData[], activeParts?: Set<string>): void {
 		container.innerHTML = '';
 
 		type PartSec = { part: string; color: string; sections: ReturnType<typeof groupIntoSections> };
@@ -129,6 +129,7 @@ export class ChoirBlockGroupWidget extends WidgetType {
 				}
 
 				for (const ps of partSections) {
+					if (activeParts && !activeParts.has(ps.part)) continue;
 					const solfaText = ps.sections[si]?.solfatextLines[li] || '';
 					if (solfaText) {
 						const solfaRow = document.createElement('div');
@@ -176,11 +177,10 @@ export class ChoirBlockGroupWidget extends WidgetType {
 				const activeTabs = tabBar.querySelectorAll('.choir-tab.active');
 
 				if (activeTabs.length === 0) {
-					tabBtn.classList.add('active');
-					return;
-				}
-
-				if (activeTabs.length === 1) {
+					contentContainer.style.display = 'none';
+					allContents.style.display = '';
+					this.renderAllMode(allContents, this.blocks, new Set());
+				} else if (activeTabs.length === 1) {
 					contentContainer.style.display = '';
 					allContents.style.display = 'none';
 					const activeTab = activeTabs[0] as HTMLElement;
@@ -191,13 +191,9 @@ export class ChoirBlockGroupWidget extends WidgetType {
 					contentContainer.style.display = 'none';
 					allContents.style.display = '';
 
-					const activeBlocks: BlockData[] = [];
-					activeTabs.forEach(t => {
-						const p = (t as HTMLElement).dataset.part!;
-						const block = this.blocks.find(b => b.part === p);
-						if (block) activeBlocks.push(block);
-					});
-					this.renderAllMode(allContents, activeBlocks);
+					const activeParts = new Set<string>();
+					activeTabs.forEach(t => activeParts.add((t as HTMLElement).dataset.part!));
+					this.renderAllMode(allContents, this.blocks, activeParts);
 				}
 			});
 		});
