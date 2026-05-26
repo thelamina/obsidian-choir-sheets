@@ -1,0 +1,146 @@
+/* Block wrapper */
+.choir-block-wrapper {
+	margin: 8px 0;
+	border-radius: 8px;
+	overflow: hidden;
+	font-family: var(--font-monospace);
+}
+
+.choir-block {
+	white-space: pre-wrap;
+}
+
+.choir-block.hidden {
+	display: none;
+}
+
+/* Section cards */
+.choir-section-card {
+	background: var(--choir-section-bg, var(--background-secondary));
+	border-radius: 8px;
+	padding: 12px;
+}
+
+.choir-section-card + .choir-section-card {
+	margin-top: 8px;
+}
+
+.choir-section-header {
+	display: block;
+	background: var(--choir-header-bg, var(--background-modifier-hover));
+	color: var(--choir-header-text, inherit);
+	border-radius: 4px;
+	padding: 6px;
+	margin-bottom: 8px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.choir-section-content {
+	padding: 8px 12px;
+}
+
+.choir-row {
+	display: block;
+	white-space: pre-wrap;
+	min-height: 1.4em;
+	line-height: 1.6;
+}
+
+.choir-lyric-row {
+	font-size: 14px;
+	margin-top: 6px;
+	color: var(--text-normal);
+}
+
+.choir-solfa-row {
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 1px;
+}
+
+.choir-solfa-row:last-child {
+	margin-bottom: 0;
+}
+
+.choir-chord-row {
+	font-size: 13px;
+	font-weight: 600;
+	font-style: italic;
+	margin-bottom: 2px;
+}
+
+.choir-chord {
+	display: inline;
+}
+
+.choir-solfa {
+	font-weight: 600;
+	display: inline;
+}
+
+.choir-word {
+	color: var(--text-normal);
+	display: inline;
+}
+
+.choir-rhythm {
+	color: var(--text-faint);
+	display: inline;
+	opacity: 0.5;
+}
+
+.choir-rest {
+	color: var(--text-muted);
+	display: inline;
+	opacity: 0.6;
+	font-style: italic;
+}
+
+/* Tab bar */
+.choir-tab-bar {
+	display: flex;
+	gap: 4px;
+	padding: 4px;
+	margin-bottom: 4px;
+	overflow-x: auto;
+}
+
+.choir-tab {
+	flex: 1;
+	padding: 8px 16px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-size: 11px;
+	font-weight: 600;
+	font-family: var(--font-monospace);
+	color: var(--text-muted);
+	text-transform: uppercase;
+	border-radius: 6px 6px 0 0;
+	text-align: center;
+	transition: all 0.15s ease;
+}
+
+.choir-tab:hover {
+	color: var(--text-normal);
+}
+
+.choir-tab.active {
+	background: var(--choir-tab-active-bg, var(--background-modifier-hover));
+}
+
+.choir-tab-contents {
+	padding: 4px;
+}
+
+.choir-tab-contents > .choir-block {
+	padding: 0;
+}
+
+.choir-all-contents {
+	padding: 4px;
+}

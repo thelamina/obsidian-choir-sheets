@@ -1,0 +1,10 @@
+{
+	"id": "choir-sheets",
+	"name": "Choir Sheets",
+	"minAppVersion": "0.15.0",
+	"description": "Render solfa notation over lyrics in your vault. Nigerian solfa, #/b solfa, and number systems for Soprano, Alto, and Tenor parts. Works in reading mode and live preview.",
+	"author": "Itunu Lamina",
+	"authorUrl": "https://github.com/thelamina",
+	"isDesktopOnly": false,
+	"version": "0.2.0"
+}

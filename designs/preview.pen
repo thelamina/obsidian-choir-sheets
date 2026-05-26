@@ -1,0 +1,688 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "xLms3",
+      "x": 0,
+      "y": 0,
+      "name": "Choir Sheets Editor",
+      "clip": true,
+      "width": 680,
+      "fill": "#1e1e2e",
+      "layout": "vertical",
+      "gap": 20,
+      "padding": 24,
+      "children": [
+        {
+          "type": "frame",
+          "id": "FNQxi",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "tw0h1",
+              "fill": "#cdd6f4",
+              "content": "My Song",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "NHOV4",
+              "fill": "#6c7086",
+              "content": "Key: C | BPM: 110 | BEAT: 4/4",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rR2S7",
+          "width": "fill_container",
+          "fill": "#181825",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 9,
+          "padding": 16,
+          "children": [
+            {
+              "type": "group",
+              "id": "NnxSL",
+              "layout": "vertical",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rQypX",
+                  "fill": "#f5c2e7",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[Verse 1]",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "POFDt",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the  sun  falls     down be  hind the  hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "mKsK0",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "S: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "NvLNW",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "J3W4H",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "T: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "id": "xIdAs",
+              "layout": "vertical",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lfiPH",
+                  "fill": "#f5c2e7",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[Chorus]",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "I1woFy",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the  sun  falls     down be  hind the  hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "UEfor",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "S: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "FudMI",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "FgxVM",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "T: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "id": "vDf0Y",
+              "layout": "vertical",
+              "width": "fill_container",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "iXCm2",
+                  "fill": "#f5c2e7",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "[Bridge]",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "OzVs0",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the  sun  falls     down be  hind the  hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "rZwrf",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "S: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Rnofw",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "XlseY",
+                  "fill": "#6c7086",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "T: d    d    r    m    |  f    s    l    t    d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "o9pzXm",
+      "x": 741,
+      "y": 0,
+      "name": "Choir Sheets Preview",
+      "clip": true,
+      "width": 680,
+      "fill": "#1e1e2e",
+      "cornerRadius": 8,
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 24,
+      "children": [
+        {
+          "type": "frame",
+          "id": "u2I3uU",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "o3D6dY",
+              "fill": "#cdd6f4",
+              "content": "My Song",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "k8yJqk",
+              "fill": "#6c7086",
+              "content": "Key: C | BPM: 110 | BEAT: 4/4",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R9Xke",
+          "width": 275,
+          "height": 36,
+          "fill": "#191926bd",
+          "cornerRadius": [
+            6,
+            6,
+            0,
+            0
+          ],
+          "stroke": {
+            "align": "outside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#313244ff"
+          },
+          "padding": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "CKqoG",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "#313244",
+              "cornerRadius": [
+                6,
+                6,
+                0,
+                0
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "K6qyW",
+                  "fill": "#89b4fa",
+                  "content": "Soprano",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LHhuF",
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": [
+                6,
+                6,
+                0,
+                0
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GnwpW",
+                  "fill": "#585b70",
+                  "content": "Alto",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "O3wSHO",
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": [
+                6,
+                6,
+                0,
+                0
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NhqBn",
+                  "fill": "#585b70",
+                  "content": "Tenor",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MGyzE",
+          "width": "fill_container",
+          "fill": "#181825",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Vf5xB",
+              "name": "Frame 1",
+              "clip": true,
+              "width": "fill_container",
+              "fill": "#313244ff",
+              "cornerRadius": 4,
+              "layout": "vertical",
+              "padding": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bzNP2",
+                  "fill": "#89b4faff",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "VERSE 1",
+                  "textAlign": "center",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11.5,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DNq16",
+              "name": "Frame 2",
+              "clip": true,
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CUKhQ",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the sun falls down behind the hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "T0ihb",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "d    d   r   m  |  f   s   l  t  d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "p4eV6",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "turns dark",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "O7CYVO",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "f     m",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v3m9OU",
+          "width": "fill_container",
+          "fill": "#181825",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "YJsGa",
+              "name": "Frame 1",
+              "clip": true,
+              "width": "fill_container",
+              "fill": "#313244ff",
+              "cornerRadius": 4,
+              "layout": "vertical",
+              "padding": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "I1ChDi",
+                  "fill": "#89b4faff",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "CHORUS",
+                  "textAlign": "center",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11.5,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TaqYp",
+              "name": "Frame 2",
+              "clip": true,
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zq8yU",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the sun falls down behind the hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "f3IkE",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "d    d   r   m  |  f   s   l  t  d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "S00ZE",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "turns dark",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "lAITr",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "f     m",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AN4jq",
+          "width": "fill_container",
+          "fill": "#181825",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "i8KEcU",
+              "name": "Frame 1",
+              "clip": true,
+              "width": "fill_container",
+              "fill": "#313244ff",
+              "cornerRadius": 4,
+              "layout": "vertical",
+              "padding": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YD3gr",
+                  "fill": "#89b4faff",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "BRIDGE",
+                  "textAlign": "center",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11.5,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DNjRX",
+              "name": "Frame 2",
+              "clip": true,
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XgYjW",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "When the sun falls down behind the hill",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "uybOQ",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "d    d   r   m  |  f   s   l  t  d'",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "JT9jR",
+                  "fill": "#cdd6f4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "turns dark",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "aET4U",
+                  "fill": "#89b4fa",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "f     m",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
