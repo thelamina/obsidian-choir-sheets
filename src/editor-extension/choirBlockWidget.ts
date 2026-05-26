@@ -44,7 +44,7 @@ export class ChoirBlockGroupWidget extends WidgetType {
 		wrapper.appendChild(allContents);
 
 		this.renderTabMode(tabBar, tabContents, allContents, wrapper);
-		this.renderAllMode(allContents, this.blocks);
+		this.renderAllMode(allContents, this.blocks, new Set());
 
 		tabContents.style.display = 'none';
 
@@ -91,7 +91,7 @@ export class ChoirBlockGroupWidget extends WidgetType {
 			const content = document.createElement('div');
 			content.className = 'choir-section-content';
 
-			const chordLines = chordPs?.sections[si]?.chordLines || [];
+			const chordLines = (!activeParts || activeParts.has('chord')) ? (chordPs?.sections[si]?.chordLines || []) : [];
 
 			const maxLines = Math.max(
 				...partSections.map(ps => {
@@ -159,7 +159,7 @@ export class ChoirBlockGroupWidget extends WidgetType {
 			const color = getPartColor(part, this.settings.partColors);
 
 			const tabBtn = document.createElement('button');
-			tabBtn.className = 'choir-tab active';
+			tabBtn.className = 'choir-tab';
 			tabBtn.dataset.part = block.part;
 			tabBtn.textContent = partLabel(part);
 			tabBtn.style.color = color;

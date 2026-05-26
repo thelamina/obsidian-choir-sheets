@@ -44,7 +44,7 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 		this.allContents = wrapper.createDiv({ cls: 'choir-all-contents' });
 
 		this.renderTabMode();
-		this.renderAllMode(this.blocks);
+		this.renderAllMode(this.blocks, new Set());
 
 		this.tabContents.style.display = 'none';
 	}
@@ -89,7 +89,7 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 			const content = document.createElement('div');
 			content.className = 'choir-section-content';
 
-			const chordLines = chordPs?.sections[si]?.chordLines || [];
+			const chordLines = (!activeParts || activeParts.has('chord')) ? (chordPs?.sections[si]?.chordLines || []) : [];
 
 			const maxLines = Math.max(
 				...partSections.map(ps => {
@@ -152,7 +152,7 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 			const color = getPartColor(part, this.settings.partColors);
 
 			const tabBtn = this.tabBar.createEl('button', {
-				cls: 'choir-tab active',
+				cls: 'choir-tab',
 			});
 			tabBtn.dataset.part = block.part;
 			tabBtn.textContent = partLabel(part);
