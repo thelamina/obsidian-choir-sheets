@@ -1,6 +1,6 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
 import ChoirSheetsPlugin from './main';
-import { Part, NotationSystem, DisplayMode } from './solfaUtils';
+import { Part, NotationSystem } from './solfaUtils';
 import { DEFAULT_PART_COLORS, DEFAULT_SETTINGS } from './choirSettings';
 
 export class ChoirSheetsSettingTab extends PluginSettingTab {
@@ -15,25 +15,11 @@ export class ChoirSheetsSettingTab extends PluginSettingTab {
 		containerEl.createEl('h2', { text: 'Choir Sheets Settings' });
 
 		new Setting(containerEl)
-			.setName('Default part')
-			.setDesc('Default voice part when not specified in the code block')
-			.addDropdown(dropdown => {
-				const parts: Part[] = ['soprano', 'alto', 'tenor', 'chord'];
-				parts.forEach(p => dropdown.addOption(p, p.charAt(0).toUpperCase() + p.slice(1)));
-				dropdown.setValue(this.plugin.settings.defaultPart);
-				dropdown.onChange(async (value) => {
-					this.plugin.settings.defaultPart = value as Part;
-					await this.plugin.saveSettings();
-					this.app.workspace.updateOptions();
-				});
-			});
-
-		new Setting(containerEl)
 			.setName('Notation system')
 			.setDesc('How solfa notes are written')
 			.addDropdown(dropdown => {
 				const systems: { value: NotationSystem; label: string }[] = [
-					{ value: 'nigerian', label: 'Nigerian (d di r mo m f fe s se l toh t d)' },
+					{ value: 'tonic-solfa', label: 'Tonic Solfa (d di r mo m f fe s se l toh t d)' },
 					{ value: 'sharp-flat', label: '#/b Solfa (#d r bm m f #f s #s l bt t)' },
 					{ value: 'number', label: 'Number (#1 b3 3 #4 5 6 b7 7)' },
 				];
@@ -47,22 +33,8 @@ export class ChoirSheetsSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
-			.setName('Display mode')
-			.setDesc('Show one part at a time (tabs) or all parts stacked')
-			.addDropdown(dropdown => {
-				dropdown.addOption('single', 'Single (tab switcher)');
-				dropdown.addOption('all', 'All (stacked)');
-				dropdown.setValue(this.plugin.settings.displayMode);
-				dropdown.onChange(async (value) => {
-					this.plugin.settings.displayMode = value as DisplayMode;
-					await this.plugin.saveSettings();
-					this.app.workspace.updateOptions();
-				});
-			});
-
-		new Setting(containerEl)
 			.setName('Block language specifier')
-			.setDesc('Code block language prefix (e.g. "choir" for ```choir-soprano)')
+			.setDesc('Code block language specifier (e.g. "choir" for ```choir)')
 			.addText(text => {
 				text.setValue(this.plugin.settings.blockLanguageSpecifier)
 					.onChange(async (value) => {

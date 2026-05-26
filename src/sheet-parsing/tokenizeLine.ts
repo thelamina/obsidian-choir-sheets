@@ -67,7 +67,7 @@ export function tokenizeLine(line: string): TokenizedLine {
 			const solfaToken: Token & { solfaNote: SolfaNote } = {
 				type: 'solfa',
 				value: part,
-				solfaNote: note || { syllable: part, step: 0, accidental: '', octave: 0, display: part, notation: 'nigerian' },
+				solfaNote: note || { syllable: part, step: 0, accidental: '', octave: 0, display: part, notation: 'tonic-solfa' },
 			};
 			tokens.push(solfaToken);
 			continue;

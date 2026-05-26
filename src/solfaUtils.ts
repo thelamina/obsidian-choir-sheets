@@ -1,6 +1,5 @@
 export type Part = 'soprano' | 'alto' | 'tenor' | 'chord';
-export type NotationSystem = 'nigerian' | 'sharp-flat' | 'number';
-export type DisplayMode = 'single' | 'all';
+export type NotationSystem = 'tonic-solfa' | 'sharp-flat' | 'number';
 
 export interface SolfaNote {
 	syllable: string;
@@ -19,7 +18,7 @@ const NUMBER_STEPS: Record<string, number> = {
 	'1': 0, '2': 2, '3': 4, '4': 5, '5': 7, '6': 9, '7': 11,
 };
 
-const NIGERIAN_ACCIDENTALS: Record<string, { step: number; display: string }> = {
+const TONIC_ACCIDENTALS: Record<string, { step: number; display: string }> = {
 	'di':  { step: 1, display: 'di' },
 	'ri':  { step: 3, display: 'ri' },
 	'mo':  { step: 3, display: 'mo' },
@@ -38,7 +37,7 @@ const NIGERIAN_ACCIDENTALS: Record<string, { step: number; display: string }> = 
 export function isSolfaSyllable(word: string): boolean {
 	if (!word) return false;
 	return (
-		isNigerianSolfa(word) ||
+		isTonicSolfa(word) ||
 		isSharpFlatSolfa(word) ||
 		isNumberSolfa(word) ||
 		isRest(word)
@@ -49,11 +48,11 @@ export function isRest(word: string): boolean {
 	return word === 'z' || word === '-';
 }
 
-function isNigerianSolfa(word: string): boolean {
+function isTonicSolfa(word: string): boolean {
 	const clean = word.replace(/'+$/, '');
 	const base = clean.replace(/[iloeah]+$/, '');
 	if (base.length === 1 && base in NATURAL_STEPS) return true;
-	if (clean in NIGERIAN_ACCIDENTALS) return true;
+	if (clean in TONIC_ACCIDENTALS) return true;
 	return false;
 }
 
@@ -80,27 +79,27 @@ export function parseSolfaNote(word: string): SolfaNote | null {
 	const octave = (word.match(/'/g) || []).length;
 	const clean = word.replace(/'/g, '');
 
-	if (clean in NIGERIAN_ACCIDENTALS) {
-		const info = NIGERIAN_ACCIDENTALS[clean];
+	if (clean in TONIC_ACCIDENTALS) {
+		const info = TONIC_ACCIDENTALS[clean];
 		return {
 			syllable: clean[0],
 			step: info.step,
 			accidental: info.step % 2 === 1 ? (info.step > (NATURAL_STEPS[clean[0]] || 0) ? '#' : 'b') : '',
 			octave,
 			display: word,
-			notation: 'nigerian',
+			notation: 'tonic-solfa',
 		};
 	}
 
-	const nigerianBase = clean.replace(/[iloeah]+$/, '');
-	if (nigerianBase.length === 1 && nigerianBase in NATURAL_STEPS && clean === nigerianBase) {
+	const tonicBase = clean.replace(/[iloeah]+$/, '');
+	if (tonicBase.length === 1 && tonicBase in NATURAL_STEPS && clean === tonicBase) {
 		return {
-			syllable: nigerianBase,
-			step: NATURAL_STEPS[nigerianBase],
+			syllable: tonicBase,
+			step: NATURAL_STEPS[tonicBase],
 			accidental: '',
 			octave,
 			display: word,
-			notation: 'nigerian',
+			notation: 'tonic-solfa',
 		};
 	}
 

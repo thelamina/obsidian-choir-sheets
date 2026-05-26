@@ -1,9 +1,7 @@
-import { Part, NotationSystem, DisplayMode } from './solfaUtils';
+import { Part, NotationSystem } from './solfaUtils';
 
 export interface ChoirSheetsSettings {
-	defaultPart: Part;
 	notationSystem: NotationSystem;
-	displayMode: DisplayMode;
 	partColors: Record<Part, string>;
 	highlightSolfa: boolean;
 	highlightHeaders: boolean;
@@ -22,9 +20,7 @@ export const DEFAULT_PART_COLORS: Record<Part, string> = {
 };
 
 export const DEFAULT_SETTINGS: ChoirSheetsSettings = {
-	defaultPart: 'soprano',
-	notationSystem: 'nigerian',
-	displayMode: 'single',
+	notationSystem: 'tonic-solfa',
 	partColors: { ...DEFAULT_PART_COLORS },
 	highlightSolfa: true,
 	highlightHeaders: true,

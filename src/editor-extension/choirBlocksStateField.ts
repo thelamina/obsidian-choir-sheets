@@ -28,13 +28,6 @@ export const choirBlocksStateField = StateField.define<DecorationSet>({
 	provide: (field: StateField<DecorationSet>) => EditorView.decorations.from(field),
 });
 
-interface BlockInfo {
-	part: string;
-	source: string;
-	from: number;
-	to: number;
-}
-
 function extractSource(state: EditorState, blockStart: number, blockEnd: number): string {
 	const fullText = state.doc.sliceString(blockStart, blockEnd);
 	const lines = fullText.split('\n');
@@ -52,91 +45,36 @@ function buildDecos(state: EditorState): DecorationSet {
 	if (!config) return builder.finish();
 
 	const prefix = config.blockLanguageSpecifier || 'choir';
-	const blocks: BlockInfo[] = [];
-	let currentBlock: { from: number; part: string } | null = null;
+	let blockStart: number | null = null;
 
 	tree.iterate({
 		enter(node) {
 			if (node.type.name === 'HyperMD-codeblock-begin') {
 				const line = state.doc.lineAt(node.from);
 				const text = line.text;
-				const match = text.match(new RegExp(`^(\`{3,}|~{3,})(${escapeRegex(prefix)})(?:-(\\w+))?`));
+				const match = text.match(new RegExp(`^(\`{3,}|~{3,})${escapeRegex(prefix)}$`));
 				if (match) {
-					currentBlock = { from: node.from, part: match[3] || '' };
+					blockStart = node.from;
 				}
-			} else if (node.type.name === 'HyperMD-codeblock-end' && currentBlock) {
-				const blockStart = currentBlock.from;
-				const blockEnd = node.to;
-				const source = extractSource(state, blockStart, blockEnd);
-
-				if (!currentBlock.part && isMultiPartSource(source)) {
+			} else if (node.type.name === 'HyperMD-codeblock-end' && blockStart !== null) {
+				const source = extractSource(state, blockStart, node.to);
+				if (isMultiPartSource(source)) {
 					const expanded = expandMultiPartSource(source);
 					if (expanded.length > 0) {
 						const sel = state.selection.main;
-						const cursorInside = blockStart <= sel.head && sel.head <= blockEnd;
+						const cursorInside = blockStart <= sel.head && sel.head <= node.to;
 						if (!cursorInside) {
 							const widget = new ChoirBlockGroupWidget(expanded, config);
-							builder.add(blockStart, blockEnd, Decoration.replace({ widget }));
+							builder.add(blockStart, node.to, Decoration.replace({ widget }));
 						}
 					}
-				} else {
-					blocks.push({
-						part: currentBlock.part || config.defaultPart || 'soprano',
-						source,
-						from: blockStart,
-						to: blockEnd,
-					});
 				}
-
-				currentBlock = null;
+				blockStart = null;
 			}
 		},
 	});
 
-	if (blocks.length === 0) return builder.finish();
-
-	const selection = state.selection.main;
-	const cursorInBlock = blocks.some(b => b.from <= selection.head && selection.head <= b.to);
-
-	if (!cursorInBlock) {
-		const groups = groupBlocks(blocks);
-
-		for (const group of groups) {
-			const from = group[0].from;
-			const to = group[group.length - 1].to;
-
-			const widget = new ChoirBlockGroupWidget(
-				group.map(b => ({ part: b.part, source: b.source })),
-				config,
-			);
-
-			builder.add(from, to, Decoration.replace({ widget }));
-		}
-	}
-
 	return builder.finish();
-}
-
-function groupBlocks(blocks: BlockInfo[]): BlockInfo[][] {
-	const groups: BlockInfo[][] = [];
-	let current: BlockInfo[] = [];
-
-	for (const block of blocks) {
-		if (current.length === 0) {
-			current.push(block);
-		} else {
-			const prev = current[current.length - 1];
-			if (block.from <= prev.to + 1) {
-				current.push(block);
-			} else {
-				groups.push(current);
-				current = [block];
-			}
-		}
-	}
-
-	if (current.length > 0) groups.push(current);
-	return groups;
 }
 
 function escapeRegex(str: string): string {
