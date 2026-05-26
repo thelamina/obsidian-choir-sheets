@@ -1,4 +1,4 @@
-name: Release Test
+name: Release
 
 on:
   workflow_dispatch:
@@ -6,10 +6,38 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test
-        run: echo "Workflow triggered"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Verify build files
+        run: |
+          ls -la
+          ls -la build
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/main.js
+            build/manifest.json
+            build/styles.css
