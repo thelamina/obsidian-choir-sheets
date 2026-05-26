@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-choir-sheets",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Choir Sheets plugin for Obsidian",
 	"main": "main.js",
 	"scripts": {
