@@ -1,43 +1,40 @@
-name: Release
-
-on:
-  workflow_dispatch:
-  push:
-    tags:
-      - 'v*'
-
+name: Release Obsidian plugin
 permissions:
   contents: write
 
+on:
+  push:
+    tags:
+      - "*"
+
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 23
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
+          node-version: "23.x"
 
       - name: Build plugin
-        run: npm run build
-
-      - name: Verify build files
         run: |
-          ls -la
-          ls -la build
+          npm install
+          npm run build
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v3
-        with:
-          files: |
-            build/main.js
-            build/manifest.json
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${{ github.ref_name }}"
+          
+          echo "Creating release for tag: $tag"
+          
+          gh release create "$tag" \
+            --title="$tag" \
+            --draft \
+            build/main.js \
+            build/manifest.json \
             build/styles.css
