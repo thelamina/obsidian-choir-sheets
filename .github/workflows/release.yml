@@ -1,18 +1,23 @@
-name: Release
+name: Release Obsidian plugin
 
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 23
           cache: npm
@@ -20,11 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build plugin
         run: npm run build
 
-      - name: Create release
-        uses: ncipollo/release-action@v1
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
         with:
-          artifacts: build/main.js,build/manifest.json,build/styles.css
-          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            build/main.js
+            build/manifest.json
+            build/styles.css
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
