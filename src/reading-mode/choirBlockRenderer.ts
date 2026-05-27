@@ -54,6 +54,17 @@ export class ChoirBlockGroupRenderer extends MarkdownRenderChild {
 		wrapper.style.setProperty('--choir-header-bg', this.settings.headerBgColor);
 		wrapper.style.setProperty('--choir-header-text', this.settings.headerTextColor);
 		wrapper.style.setProperty('--choir-tab-active-bg', this.settings.tabActiveBgColor);
+		wrapper.style.setProperty('--choir-lyrics-font-size', `${this.settings.lyricsFontSize}px`);
+		wrapper.style.setProperty('--choir-lyrics-font-weight', String(this.settings.lyricsFontWeight));
+		wrapper.style.setProperty('--choir-solfa-font-size', `${this.settings.solfaFontSize}px`);
+		wrapper.style.setProperty('--choir-solfa-font-weight', String(this.settings.solfaFontWeight));
+		wrapper.style.setProperty('--choir-chord-font-size', `${this.settings.chordFontSize}px`);
+		wrapper.style.setProperty('--choir-chord-font-weight', String(this.settings.chordFontWeight));
+		wrapper.style.setProperty('--choir-header-font-size', `${this.settings.headerFontSize}px`);
+		wrapper.style.setProperty('--choir-header-font-weight', String(this.settings.headerFontWeight));
+		wrapper.style.setProperty('--choir-tab-font-size', `${this.settings.tabFontSize}px`);
+		wrapper.style.setProperty('--choir-tab-font-weight', String(this.settings.tabFontWeight));
+		wrapper.style.setProperty('--choir-wrap', this.settings.wrapText ? 'pre-wrap' : 'nowrap');
 	}
 
 	private renderAllMode(blocks: BlockData[], activeParts?: Set<string>): void {

@@ -34,8 +34,8 @@
 	margin-bottom: 8px;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 11.5px;
-	font-weight: 600;
+	font-size: var(--choir-header-font-size, 11.5px);
+	font-weight: var(--choir-header-font-weight, 600);
 	letter-spacing: 1px;
 }
 
@@ -45,20 +45,21 @@
 
 .choir-row {
 	display: block;
-	white-space: pre-wrap;
+	white-space: var(--choir-wrap, pre-wrap);
 	min-height: 1.4em;
 	line-height: 1.6;
 }
 
 .choir-lyric-row {
-	font-size: 14px;
+	font-size: var(--choir-lyrics-font-size, 14px);
+	font-weight: var(--choir-lyrics-font-weight, 400);
 	margin-top: 6px;
 	color: var(--text-normal);
 }
 
 .choir-solfa-row {
-	font-size: 13px;
-	font-weight: 600;
+	font-size: var(--choir-solfa-font-size, 13px);
+	font-weight: var(--choir-solfa-font-weight, 600);
 	margin-bottom: 1px;
 }
 
@@ -67,8 +68,8 @@
 }
 
 .choir-chord-row {
-	font-size: 13px;
-	font-weight: 600;
+	font-size: var(--choir-chord-font-size, 13px);
+	font-weight: var(--choir-chord-font-weight, 600);
 	font-style: italic;
 	margin-bottom: 2px;
 }
@@ -115,8 +116,8 @@
 	border: none;
 	background: transparent;
 	cursor: pointer;
-	font-size: 11px;
-	font-weight: 600;
+	font-size: var(--choir-tab-font-size, 11px);
+	font-weight: var(--choir-tab-font-weight, 600);
 	font-family: var(--font-monospace);
 	color: var(--text-muted);
 	text-transform: uppercase;

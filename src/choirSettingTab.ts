@@ -77,6 +77,26 @@ export class ChoirSheetsSettingTab extends PluginSettingTab {
 				});
 			});
 
+		containerEl.createEl('h3', { text: 'Typography' });
+
+		this.addFontSetting('Lyrics', 'lyrics');
+		this.addFontSetting('Solfa', 'solfa');
+		this.addFontSetting('Chords', 'chord');
+		this.addFontSetting('Headers', 'header');
+		this.addFontSetting('Tabs', 'tab');
+
+		new Setting(containerEl)
+			.setName('Wrap text')
+			.setDesc('Allow lyrics and solfa to wrap, or scroll horizontally')
+			.addToggle(toggle => {
+				toggle.setValue(this.plugin.settings.wrapText);
+				toggle.onChange(async (value) => {
+					this.plugin.settings.wrapText = value;
+					await this.plugin.saveSettings();
+					this.app.workspace.updateOptions();
+				});
+			});
+
 		containerEl.createEl('h3', { text: 'Display Colors' });
 
 		new Setting(containerEl)
@@ -165,6 +185,38 @@ export class ChoirSheetsSettingTab extends PluginSettingTab {
 				picker.setValue(this.plugin.settings.partColors[part]);
 				picker.onChange(async (value) => {
 					this.plugin.settings.partColors[part] = value;
+					await this.plugin.saveSettings();
+					this.app.workspace.updateOptions();
+				});
+			});
+	}
+
+	private addFontSetting(label: string, key: 'lyrics' | 'solfa' | 'chord' | 'header' | 'tab') {
+		new Setting(this.containerEl)
+			.setName(`${label} font size`)
+			.setDesc(`Font size (px) and weight for ${label.toLowerCase()}`)
+			.addText(text => {
+				text.setValue(String(this.plugin.settings[`${key}FontSize`]))
+					.setPlaceholder('14')
+					.onChange(async (value) => {
+						const num = parseInt(value);
+						if (!isNaN(num) && num > 0) {
+							(this.plugin.settings as any)[`${key}FontSize`] = num;
+							await this.plugin.saveSettings();
+							this.app.workspace.updateOptions();
+						}
+					});
+			})
+			.addDropdown(dropdown => {
+				dropdown.addOption('300', 'Light');
+				dropdown.addOption('400', 'Regular');
+				dropdown.addOption('500', 'Medium');
+				dropdown.addOption('600', 'Semibold');
+				dropdown.addOption('700', 'Bold');
+				dropdown.addOption('800', 'Heavy');
+				dropdown.setValue(String(this.plugin.settings[`${key}FontWeight`]));
+				dropdown.onChange(async (value) => {
+					(this.plugin.settings as any)[`${key}FontWeight`] = parseInt(value);
 					await this.plugin.saveSettings();
 					this.app.workspace.updateOptions();
 				});
