@@ -105,13 +105,15 @@
 .choir-tab-bar {
 	display: flex;
 	gap: 4px;
+	justify-content: flex-end;
 	padding: 4px;
-	margin-bottom: 4px;
+	margin-bottom: 8px;
 	overflow-x: auto;
+	border-radius: 6px 6px 0 0;
+	/* border: 1px solid var(--choir-section-bg); */
 }
 
 .choir-tab {
-	flex: 1;
 	padding: 8px 16px;
 	border: none;
 	background: transparent;
@@ -131,11 +133,12 @@
 }
 
 .choir-tab.active {
+	border-bottom: 2px solid;
 	background: var(--choir-tab-active-bg, var(--background-modifier-hover));
 }
 
 .choir-tab-contents {
-	padding: 4px;
+	padding: 0px;
 }
 
 .choir-tab-contents > .choir-block {
@@ -143,5 +146,5 @@
 }
 
 .choir-all-contents {
-	padding: 4px;
+	padding: 0px;
 }
